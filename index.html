@@ -186,28 +186,23 @@
     }
     #btnBoda {
       position: fixed;
-      bottom: 30px;
-      /* un poco más arriba del borde */
-      left: 30px;
-      /* margen desde la derecha */
-      z-index: 10000;
-      /* encima de la escena 3D */
-      background-color: rgba(131, 131, 131, 0.3);
-      /* semi-transparente */
-      color: white;
-      padding: 12px 22px;
-      border-radius: 50px;
-      /* bordes redondeados */
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      /* 🔥 clave para que esté arriba de todo */
+      width: 60px;
+      height: 60px;
+      border: none;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
     }
 
     #btnBoda:hover {
+      background: rgba(255, 255, 255, 1);
       transform: scale(1.1);
-      background-color: rgba(7, 9, 32, 0.9);
     }
   </style>
 </head>
@@ -434,6 +429,7 @@
 </body>
 
 </html>
+
 
 
 
