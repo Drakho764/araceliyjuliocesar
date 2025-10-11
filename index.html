@@ -256,7 +256,8 @@
     <p style="font-size: clamp(0.9rem, 4vw, 1.5rem)">Quienes nos acompañan este día</p><br>
   </div>
   <div>
-    <h3 style="font-size: clamp(1.5rem, 8vw, 3rem);text-align: center; font-family: 'Great Vibes', cursive;">Yolanda López
+    <h3 style="font-size: clamp(1.5rem, 8vw, 3rem);text-align: center; font-family: 'Great Vibes', cursive;">Yolanda
+      López
       Suárez<br>y<br>Javier López Reyes</h3>
   </div>
   <div style="text-align: center; font-family: 'Bodoni Moda', serif; margin-left: 10%;margin-right: 10%;">
@@ -342,25 +343,40 @@
       updateCountdown();
       setInterval(updateCountdown, MS_SECOND);
     });
-    document.getElementById('formAsistencia').addEventListener('submit', function (e) {
-      e.preventDefault(); // evita recargar la página
 
-      const nombre = document.getElementById('nombre').value;
-      const mensaje = document.getElementById('mensaje').value;
-
-      fetch('https://script.google.com/macros/s/AKfycbw5RIhsP3zUq9Uq0ufyn2sz-8c_dKYnaekhVs3k_rr2JZ1Br_NjV2eZ5Lz23P7dHsHKvQ/exec', { // reemplaza con tu URL de Apps Script
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, mensaje })
-      })
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('respuesta').style.display = 'block';
-          document.getElementById('formAsistencia').reset();
-        })
-        .catch(err => console.error(err));
-    });
   </script>
+  <script>
+    const form = document.getElementById("formAsistencia");
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5ozjnbYJ25JyOnLFRHfHbhQVPL6nyCkSTZHLaYZ9ES9zp5JGCe-mkobmXAqnZJ_EWHw/exec"; // Reemplaza con tu URL
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value;
+      const mensaje = document.getElementById("mensaje").value;
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ nombre, mensaje })
+        });
+
+        // Limpiar campos
+        form.reset();
+
+        // Mostrar alerta de confirmación
+        alert("✅ ¡Gracias por confirmar tu asistencia!");
+
+      } catch (error) {
+        console.error("Error al enviar datos:", error);
+        alert("❌ Ocurrió un error, intenta de nuevo.");
+      }
+    });
+
+  </script>
+
   <script>
     const musica = document.getElementById('musicaFondo');
     const btnMusica = document.getElementById('btnMusica');
@@ -390,6 +406,3 @@
 </body>
 
 </html>
-
-
-
