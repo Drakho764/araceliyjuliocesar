@@ -184,6 +184,31 @@
         font-size: 1.5rem;
       }
     }
+    #btnBoda {
+      position: fixed;
+      bottom: 30px;
+      /* un poco más arriba del borde */
+      right: 30px;
+      /* margen desde la derecha */
+      z-index: 10000;
+      /* encima de la escena 3D */
+      background-color: rgba(7, 9, 32, 0.9);
+      /* semi-transparente */
+      color: white;
+      padding: 12px 22px;
+      border-radius: 50px;
+      /* bordes redondeados */
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #btnBoda:hover {
+      transform: scale(1.1);
+      background-color: rgba(22, 100, 189, 0.95);
+    }
   </style>
 </head>
 
@@ -191,6 +216,9 @@
   <audio id="musicaFondo" loop>
     <source src="img/marry-you.mp3" type="audio/mpeg">
   </audio>
+   <a href="https://araceliyjuliocesar.vercel.app/" target="_blank" id="btnBoda" class="btn-floating">
+    XV
+  </a>
   <button id="btnMusica" class="btn btn-light position-fixed bottom-0 end-0 m-3 shadow rounded-circle">
     <i id="iconoMusica" class="bi bi-play-fill fs-3"></i>
   </button>
@@ -406,3 +434,4 @@
 </body>
 
 </html>
+
