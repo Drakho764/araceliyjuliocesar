@@ -7,34 +7,55 @@
   <title>Araceli y Julio César</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Bodoni+Moda:opsz@6..96&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Bodoni+Moda:opsz@6..96&display=swap"
+    rel="stylesheet">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
+
   <style>
     body {
-      margin: 0;
-      padding: 0;
       background: url('img/FONDO.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Bodoni Moda', serif;
       color: #354935;
     }
 
-    h1, h2, h3, .great-vibes {
+    h1,
+    h2,
+    h3,
+    .great-vibes {
       font-family: 'Great Vibes', cursive;
     }
 
-    html, body, section, header, footer {
-      margin: 0;
-      padding: 0;
+    .section-divider img {
+      height: 45px;
     }
 
-    .container {
-      padding-left: 0;
-      padding-right: 0;
+    /* Carrusel de lugar: recorta elegante */
+    #carouselLugar .carousel-item img {
+      border-radius: 10px;
+      object-fit: cover;
+      height: 300px;
+    }
+
+    /* Carrusel de nosotros: muestra imagen completa sin recortar */
+    #carouselNosotros .carousel-item img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      /* evita recorte */
+      background-color: #ffffff;
+      /* para que no se vea fondo negro */
+    }
+
+    .hero {
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
     .hero-img {
@@ -42,6 +63,7 @@
       height: auto;
       display: block;
       border-radius: 0;
+      /* sin bordes redondeados */
       margin: 0;
     }
 
@@ -54,18 +76,41 @@
 
     .countdown .number {
       font-size: 4rem;
+      /* tamaño de los números */
       line-height: 1;
+    }
+
+    .countdown .label {
+      font-size: 2rem;
+      /* tamaño del texto debajo (Días, Horas, etc.) */
+      font-family: 'Bodoni Moda', serif;
+      display: block;
+      margin-top: 0.5rem;
     }
 
     .countdown .separator {
       font-size: 3rem;
+      font-weight: normal;
       margin: 0 10px;
     }
 
-    .countdown h3 {
-      font-size: 2rem;
-      margin-top: 0.5rem;
-      font-family: 'Bodoni Moda', serif;
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    section,
+    header,
+    footer {
+      margin: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .container {
+      padding-left: 0;
+      padding-right: 0;
     }
 
     #btnMusica {
@@ -73,6 +118,7 @@
       bottom: 20px;
       right: 20px;
       z-index: 9999;
+      /* 🔥 clave para que esté arriba de todo */
       width: 60px;
       height: 60px;
       border: none;
@@ -91,27 +137,73 @@
     #iconoMusica {
       font-size: 1.8rem;
     }
+
+    /* Estilo base (escritorio) */
+    .countdown .number {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .countdown h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .countdown .separator {
+      font-size: 3rem;
+      margin: 0 10px;
+    }
+
+    /* 🔽 Ajustes para pantallas medianas (tablets y teléfonos grandes) */
+    @media (max-width: 768px) {
+      .countdown .number {
+        font-size: 2.5rem;
+      }
+
+      .countdown h3 {
+        font-size: 1.3rem;
+      }
+
+      .countdown .separator {
+        font-size: 2rem;
+        margin: 0 5px;
+      }
+    }
+
+    /* 🔽 Ajustes para teléfonos pequeños */
+    @media (max-width: 480px) {
+      .countdown .number {
+        font-size: 2rem;
+      }
+
+      .countdown h3 {
+        font-size: 1rem;
+      }
+
+      .countdown .separator {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Música -->
   <audio id="musicaFondo" loop>
     <source src="img/marry-you.mp3" type="audio/mpeg">
   </audio>
-  <button id="btnMusica" class="btn btn-light">
+  <button id="btnMusica" class="btn btn-light position-fixed bottom-0 end-0 m-3 shadow rounded-circle">
     <i id="iconoMusica" class="bi bi-play-fill fs-3"></i>
   </button>
-
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
     <div class="container">
-      <a class="navbar-brand text-Dark fw-bold" href="#">♥A&JC♥</a>
+      <a class="navbar-brand text-dark fw-bold" href="#">♥A&JC♥</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto ">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link text-dark" href="#">♥Inicio♥</a></li>
           <li class="nav-item"><a class="nav-link text-dark" href="#Lugar">♥Lugar y Fecha♥</a></li>
           <li class="nav-item"><a class="nav-link text-dark" href="#Formu">♥Confirmar Asistencia♥</a></li>
@@ -120,155 +212,181 @@
     </div>
   </nav>
 
-  <!-- Portada -->
-  <section class="text-center pt-5 mt-5">
-    <img src="img/nombres.png" alt="Nombres" class="hero-img">
+  <!-- Portada de nombres a todo lo ancho -->
+  <section class="hero text-center pt-5 mt-5 position-relative">
+    <img src="img/nombres.png" alt="Nombres" class="hero-img img-fluid">
   </section>
 
   <!-- Fecha -->
   <div class="container text-center my-5">
     <img src="img/fecha.png" alt="Fecha" class="img-fluid mb-3">
   </div>
-
   <!-- Contador regresivo -->
   <section class="container text-center countdown my-5">
     <h3 class="great-vibes fs-1">Nos vemos en</h3>
     <div class="d-flex justify-content-center flex-wrap align-items-center">
       <div class="p-3">
-        <span id="days" class="number">0</span><h3>Días</h3>
+        <span id="days" class="number">0</span>
+        <h3>Días</h3>
       </div>
       <div class="separator">:</div>
       <div class="p-3">
-        <span id="hours" class="number">0</span><h3>Horas</h3>
+        <span id="hours" class="number">0</span>
+        <h3>Horas</h3>
       </div>
       <div class="separator">:</div>
       <div class="p-3">
-        <span id="minutes" class="number">0</span><h3>Minutos</h3>
+        <span id="minutes" class="number">0</span>
+        <h3>Minutos</h3>
       </div>
       <div class="separator">:</div>
       <div class="p-3">
-        <span id="seconds" class="number">0</span><h3>Segundos</h3>
+        <span id="seconds" class="number">0</span>
+        <h3>Segundos</h3>
       </div>
     </div>
   </section>
-
   <!-- Acompañantes -->
-  <div class="text-center">
-    <img src="img/borde.png" alt="borde" height="45">
-    <h1 class="great-vibes" style="font-size:6em;">Con la bendición de Dios</h1>
-    <p class="fs-2" style="font-family:'Bodoni Moda',serif;">Quienes nos acompañan este día</p>
-    <h3 class="great-vibes" style="font-size:3em;">Yolanda López Suárez<br>y<br>Javier López Reyes</h3>
-    <p class="fs-2" style="font-family:'Bodoni Moda',serif;">-Nuestros Padrinos-</p>
-    <img src="img/borde.png" alt="borde" height="45">
+  <div style="text-align: center; font-family: 'Great Vibes', cursive;">
+    <img src="img/borde.png" alt="borde" width="auto" height="45px">
+    <h1 style="font-size: clamp(2.5rem, 8vw, 5rem);">Con la bendición de Dios</h1>
   </div>
-
+  <div style="text-align: center; font-family: 'Bodoni Moda', serif;
+      margin-left: 10%;margin-right: 10%;">
+    <p style="font-size:1.5em">Quienes nos acompañan este día</p><br>
+  </div>
+  <div>
+    <h3 style="font-size: clamp(1.5rem, 8vw, 3rem);text-align: center; font-family: 'Great Vibes', cursive;">Yolanda López
+      Suárez<br>y<br>Javier López Reyes</h3>
+  </div>
+  <div style="text-align: center; font-family: 'Bodoni Moda', serif; margin-left: 10%;margin-right: 10%;">
+    <br>
+    <p style="font-size: 2em">-Nuestros Padrinos-</p><br>
+  </div>
+  <div style="text-align: center; font-family: 'Great Vibes', cursive;">
+    <img src="img/borde.png" alt="borde" width="auto" height="45px">
+  </div>
+  <!-- Fin Acompañantes -->
   <!-- Lugar -->
-  <section id="Lugar" class="container text-center my-5 p-4 rounded" style="background-color:#585c4f8e;">
-    <div class="row justify-content-center">
-      <div class="col-md-5 mb-4">
-        <h3 class="great-vibes fs-1 text-white fw-bold">Ceremonia</h3>
-        <p class="fs-4 text-white">Santuario de los Remedios, Cerro Grande<br>Victoria Gto.<br>2:00pm</p>
-        <a href="https://maps.app.goo.gl/w2RJCFrnfAA5yYtx8" target="_blank" class="btn btn-outline-light">Ver mapa</a>
+  <section id="Lugar" class="container text-center my-5 p-4 rounded" style="background-color: #585c4f8e;">
+    <div class="row justify-content-center align-items-start">
+      <div class="col-md-5 mb-4 mb-md-0">
+        <h3 class="great-vibes fs-1" style="font-weight: bold; color: #ffffff;">Ceremonia</h3>
+        <p style="color: #ffffff;" class="fs-4">Santuario de los Remedios, Cerro Grande<br>Victoria
+          Gto.<br>2:00pm<br><br></p>
+        <a href="https://maps.app.goo.gl/w2RJCFrnfAA5yYtx8" target="_blank" class="btn btn-outline-dark"
+          style="color: #ffffff;">Ver mapa</a>
       </div>
-      <div class="col-md-5 mb-4">
-        <h3 class="great-vibes fs-1 text-white fw-bold">Recepción</h3>
-        <p class="fs-4 text-white">Carretera a Tierra Blanca<br>Casa Amador Téllez<br>(Frente a la barranca)<br>3:30pm</p>
-        <a href="https://maps.app.goo.gl/Hh8T5mjdqw3GeQDo6" target="_blank" class="btn btn-outline-light">Ver mapa</a>
+
+      <div class="col-md-5 mb-4 mb-md-0">
+        <h3 class="great-vibes fs-1" style="font-weight: bold; color: #ffffff;">Recepción</h3>
+        <p style="color: #ffffff;" class="fs-4">Carretera a Tierra Blanca<br>Casa Amador Téllez<br>(Frente a la
+          barranca)<br>3:30pm</p>
+        <a href="https://maps.app.goo.gl/Hh8T5mjdqw3GeQDo6" target="_blank" class="btn btn-outline-dark"
+          style="color: #ffffff;">Ver mapa</a>
       </div>
+
     </div>
   </section>
 
   <!-- Confirmación -->
   <section id="Formu" class="container text-center my-5 p-4 bg-light rounded">
-    <h2 class="great-vibes fs-1 mb-4">Confirma tu asistencia</h2>
-    <form id="formAsistencia" class="text-start mx-auto" style="max-width:400px;">
+    <h2 class="great-vibes fs-1 mb-4" style="font-size: clamp(2.5rem, 8vw, 5rem);">Confirma tu asistencia</h2>
+
+    <form id="formAsistencia" class="text-start mx-auto" style="max-width: 400px;">
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre completo:</label>
         <input type="text" class="form-control" id="nombre" name="nombre" required>
       </div>
+
       <div class="mb-3">
         <label for="mensaje" class="form-label">Mensaje adicional (opcional):</label>
         <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
       </div>
+
       <button type="submit" class="btn btn-dark w-100">Confirmar asistencia</button>
     </form>
-    <div id="respuesta" class="mt-3 text-success" style="display:none;">¡Gracias por confirmar tu asistencia! 💖</div>
+
+    <div id="respuesta" class="mt-3 text-success" style="display:none;">
+      ¡Gracias por confirmar tu asistencia! 💖
+    </div>
   </section>
 
-  <!-- Cierre -->
-  <section class="text-center pt-5 mt-5">
-    <h1 style="color:#3c3d3a;">Celebremos juntos este amor</h1>
-    <img src="img/FLORES.png" alt="Flores" class="hero-img">
+  <section class="hero text-center pt-5 mt-5 position-relative">
+    <h1 style="color: #3c3d3a;font-size: clamp(2.5rem, 8vw, 5rem);">Celebremos juntos este amor</h1>
+    <img src="img/FLORES.png" alt="Flores" class="hero-img img-fluid">
   </section>
 
-  <!-- Scripts -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Contador -->
   <script>
-    // === CONTADOR ===
     document.addEventListener('DOMContentLoaded', () => {
       const DATE_TARGET = new Date('2025-12-20T18:00:00');
-      const d = document;
-      const day = d.getElementById('days');
-      const hour = d.getElementById('hours');
-      const min = d.getElementById('minutes');
-      const sec = d.getElementById('seconds');
-      const MS = { s: 1000, m: 60000, h: 3600000, d: 86400000 };
+      const SPAN_DAYS = document.getElementById('days');
+      const SPAN_HOURS = document.getElementById('hours');
+      const SPAN_MINUTES = document.getElementById('minutes');
+      const SPAN_SECONDS = document.getElementById('seconds');
+      const MS_SECOND = 1000, MS_MINUTE = MS_SECOND * 60, MS_HOUR = MS_MINUTE * 60, MS_DAY = MS_HOUR * 24;
 
-      function update() {
-        const diff = DATE_TARGET - new Date();
-        day.textContent = Math.floor(diff / MS.d);
-        hour.textContent = Math.floor((diff % MS.d) / MS.h);
-        min.textContent = Math.floor((diff % MS.h) / MS.m);
-        sec.textContent = Math.floor((diff % MS.m) / MS.s);
+      function updateCountdown() {
+        const now = new Date();
+        const diff = DATE_TARGET - now;
+        SPAN_DAYS.textContent = Math.floor(diff / MS_DAY);
+        SPAN_HOURS.textContent = Math.floor((diff % MS_DAY) / MS_HOUR);
+        SPAN_MINUTES.textContent = Math.floor((diff % MS_HOUR) / MS_MINUTE);
+        SPAN_SECONDS.textContent = Math.floor((diff % MS_MINUTE) / MS_SECOND);
       }
 
-      update();
-      setInterval(update, 1000);
+      updateCountdown();
+      setInterval(updateCountdown, MS_SECOND);
     });
+    document.getElementById('formAsistencia').addEventListener('submit', function (e) {
+      e.preventDefault(); // evita recargar la página
 
-    // === FORMULARIO ===
-    document.getElementById('formAsistencia').addEventListener('submit', e => {
-      e.preventDefault();
       const nombre = document.getElementById('nombre').value;
       const mensaje = document.getElementById('mensaje').value;
 
-      fetch('https://script.google.com/macros/s/AKfycbw5RIhsP3zUq9Uq0ufyn2sz-8c_dKYnaekhVs3k_rr2JZ1Br_NjV2eZ5Lz23P7dHsHKvQ/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbw5RIhsP3zUq9Uq0ufyn2sz-8c_dKYnaekhVs3k_rr2JZ1Br_NjV2eZ5Lz23P7dHsHKvQ/exec', { // reemplaza con tu URL de Apps Script
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre, mensaje })
       })
-        .then(r => r.json())
-        .then(() => {
+        .then(res => res.json())
+        .then(data => {
           document.getElementById('respuesta').style.display = 'block';
-          e.target.reset();
+          document.getElementById('formAsistencia').reset();
         })
-        .catch(console.error);
+        .catch(err => console.error(err));
     });
-
-    // === MÚSICA ===
+  </script>
+  <script>
     const musica = document.getElementById('musicaFondo');
-    const btn = document.getElementById('btnMusica');
-    const icono = document.getElementById('iconoMusica');
+    const btnMusica = document.getElementById('btnMusica');
+    const iconoMusica = document.getElementById('iconoMusica');
 
+    // Reproducir automáticamente al abrir (requiere interacción mínima en móviles)
     window.addEventListener('DOMContentLoaded', () => {
-      musica.play().then(() => {
-        icono.className = 'bi bi-pause-fill fs-3';
-      }).catch(() => {
-        icono.className = 'bi bi-play-fill fs-3';
+      musica.play().catch(() => {
+        // Si el navegador bloquea la reproducción automática,
+        // mostramos el botón en modo "play"
+        iconoMusica.className = 'bi bi-play-fill fs-3';
       });
     });
 
-    btn.addEventListener('click', () => {
+    // Cambiar entre play y pause
+    btnMusica.addEventListener('click', () => {
       if (musica.paused) {
         musica.play();
-        icono.className = 'bi bi-pause-fill fs-3';
+        iconoMusica.className = 'bi bi-pause-fill fs-3';
       } else {
         musica.pause();
-        icono.className = 'bi bi-play-fill fs-3';
+        iconoMusica.className = 'bi bi-play-fill fs-3';
       }
     });
   </script>
+
 </body>
+
 </html>
-
-
